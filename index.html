@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maintenance Technician — AHM Management, LLC</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold: #1B3785;
+      --gold-light: #D0D9F0;
+      --dark: #1A1A1A;
+      --mid: #3D3D3D;
+      --muted: #6B6B6B;
+      --bg: #F5F6FA;
+      --white: #FFFFFF;
+      --border: #D8DCE8;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--dark);
+      line-height: 1.6;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--dark);
+      color: var(--white);
+      padding: 56px 24px 48px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        135deg,
+        transparent,
+        transparent 40px,
+        rgba(200,168,75,0.04) 40px,
+        rgba(200,168,75,0.04) 80px
+      );
+    }
+    .hero-inner { position: relative; max-width: 720px; margin: 0 auto; }
+    .company-badge {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--white);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 2px;
+      margin-bottom: 20px;
+    }
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 16px;
+    }
+    .hero h1 span { color: var(--gold); }
+    .hero-sub {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.7);
+      max-width: 500px;
+      margin: 0 auto 28px;
+    }
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+    .hero-tag {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.85);
+      font-size: 0.82rem;
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: 999px;
+    }
+    .hero-tag svg {
+      display: inline;
+      vertical-align: middle;
+      margin-right: 5px;
+      margin-top: -2px;
+    }
+
+    /* ── APPLY BANNER ── */
+    .apply-banner {
+      background: var(--gold);
+      padding: 20px 24px;
+      text-align: center;
+    }
+    .apply-banner p {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--white);
+    }
+    .apply-banner a {
+      color: var(--white);
+      text-decoration: underline;
+      font-weight: 700;
+    }
+
+    /* ── MAIN LAYOUT ── */
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 40px;
+      align-items: start;
+    }
+    @media (max-width: 700px) {
+      .container { grid-template-columns: 1fr; }
+      .sidebar { order: -1; }
+    }
+
+    /* ── SECTIONS ── */
+    .section { margin-bottom: 36px; }
+    .section-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .section h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--dark);
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--border);
+    }
+    .section p {
+      color: var(--mid);
+      font-size: 0.95rem;
+      margin-bottom: 10px;
+    }
+    .section ul {
+      list-style: none;
+      padding: 0;
+    }
+    .section ul li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      color: var(--mid);
+      font-size: 0.93rem;
+      padding: 6px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .section ul li:last-child { border-bottom: none; }
+    .bullet {
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      background: var(--gold);
+      border-radius: 50%;
+      margin-top: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .bullet::after {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: var(--white);
+      border-radius: 50%;
+    }
+
+    /* ── SIDEBAR ── */
+    .sidebar { display: flex; flex-direction: column; gap: 20px; }
+
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 24px;
+    }
+    .card h3 {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .card-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.88rem;
+      color: var(--mid);
+    }
+    .card-row:last-child { border-bottom: none; }
+    .card-icon {
+      width: 30px;
+      height: 30px;
+      background: var(--bg);
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 14px;
+    }
+    .card-row strong { display: block; color: var(--dark); font-weight: 600; font-size: 0.88rem; }
+    .card-row span { font-size: 0.8rem; color: var(--muted); }
+
+    /* benefits grid */
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .benefit-item {
+      background: var(--bg);
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: var(--mid);
+      line-height: 1.3;
+    }
+
+    /* CTA card */
+    .cta-card {
+      background: var(--dark);
+      border-color: var(--dark);
+      text-align: center;
+    }
+    .cta-card h3 { color: rgba(255,255,255,0.5); }
+    .cta-card p {
+      color: rgba(255,255,255,0.75);
+      font-size: 0.88rem;
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+    .cta-btn {
+      display: block;
+      background: var(--gold);
+      color: var(--white);
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-decoration: none;
+      padding: 13px 20px;
+      border-radius: 6px;
+      transition: opacity 0.2s;
+    }
+    .cta-btn:hover { opacity: 0.88; }
+    .cta-email {
+      margin-top: 12px;
+      font-size: 0.78rem;
+      color: rgba(255,255,255,0.45);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 24px;
+      font-size: 0.78rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── PRINT ── */
+    @media print {
+      .apply-banner, .cta-card { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      body { background: white; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="company-badge">AHM Management, LLC — St. Louis, MO</div>
+      <h1>Maintenance <span>Technician</span></h1>
+      <p class="hero-sub">Join a fast-growing property management team dedicated to excellence, passion, and purpose in the City of St. Louis.</p>
+      <div class="hero-tags">
+        <span class="hero-tag">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+          Full-Time
+        </span>
+        <span class="hero-tag">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>
+          St. Louis, MO 63103
+        </span>
+        <span class="hero-tag">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          In Person
+        </span>
+        <span class="hero-tag">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          Competitive Pay + Bonuses
+        </span>
+      </div>
+    </div>
+  </div>
+
+  <!-- APPLY BANNER -->
+  <div class="apply-banner">
+    <p>Ready to apply? Send your resume to <a href="mailto:maintenance@ahmre.com">maintenance@ahmre.com</a></p>
+  </div>
+
+  <!-- MAIN -->
+  <div class="container">
+    <main>
+
+      <!-- ABOUT -->
+      <div class="section">
+        <div class="section-label">About Us</div>
+        <h2>Who We Are</h2>
+        <p>AHM Management, LLC is the property management arm of AHM Group, a rapidly expanding real estate development company singularly focused on the City of St. Louis. Over the past five years, we've grown from a three-person operation to a team of 15 with a development pipeline of over <strong>700 apartment units</strong> across multiple mixed-use and multi-family buildings.</p>
+        <p>We're invested in the growth of our team just as much as the growth of our portfolio — with real opportunities for leadership and advancement.</p>
+      </div>
+
+      <!-- RESPONSIBILITIES -->
+      <div class="section">
+        <div class="section-label">The Role</div>
+        <h2>Duties &amp; Responsibilities</h2>
+        <ul>
+          <li><div class="bullet"></div>Respond to and coordinate all tenant work orders</li>
+          <li><div class="bullet"></div>Assist in creating preventative maintenance plans (HVAC filters, smoke detectors, roof inspections, mechanical inspections)</li>
+          <li><div class="bullet"></div>Diagnose and perform minor and routine maintenance repairs in a timely, professional manner</li>
+          <li><div class="bullet"></div>Inspect vacant units between move-out and move-in</li>
+          <li><div class="bullet"></div>Manage tool and material inventories</li>
+          <li><div class="bullet"></div>Diagnose and fix physical building issues using tools and equipment</li>
+          <li><div class="bullet"></div>Available for on-call needs as required</li>
+        </ul>
+      </div>
+
+      <!-- QUALIFICATIONS -->
+      <div class="section">
+        <div class="section-label">What We're Looking For</div>
+        <h2>Qualifications</h2>
+        <ul>
+          <li><div class="bullet"></div>2–5 years of property maintenance experience (at least 1 year in multi-family) — preferred</li>
+          <li><div class="bullet"></div>Experience with building trades preferred</li>
+          <li><div class="bullet"></div>Basic knowledge of electrical, plumbing, HVAC/mechanical systems, and painting</li>
+          <li><div class="bullet"></div>Excellent written and verbal communication skills</li>
+          <li><div class="bullet"></div>Comfort working non-standard hours</li>
+          <li><div class="bullet"></div>Familiarity with building standards and municipal/state regulatory codes</li>
+          <li><div class="bullet"></div>Ability to adapt to a fluid, fast-paced daily routine</li>
+          <li><div class="bullet"></div>CPO Certification recommended</li>
+          <li><div class="bullet"></div>EPA Certification recommended</li>
+          <li><div class="bullet"></div>Valid driver's license required</li>
+          <li><div class="bullet"></div>Must be able to commute to or relocate to St. Louis, MO 63103</li>
+        </ul>
+      </div>
+
+    </main>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <!-- APPLY CTA -->
+      <div class="card cta-card">
+        <h3>Apply Now</h3>
+        <p>Send your resume and we'll be in touch. We're actively hiring.</p>
+        <a class="cta-btn" href="mailto:maintenance@ahmre.com">Email Your Resume</a>
+        <div class="cta-email">maintenance@ahmre.com</div>
+      </div>
+
+      <!-- JOB DETAILS -->
+      <div class="card">
+        <h3>Job Details</h3>
+        <div class="card-row">
+          <div class="card-icon">📋</div>
+          <div><strong>Job Type</strong><span>Full-Time, Hourly</span></div>
+        </div>
+        <div class="card-row">
+          <div class="card-icon">📍</div>
+          <div><strong>Location</strong><span>St. Louis, MO 63103</span></div>
+        </div>
+        <div class="card-row">
+          <div class="card-icon">🕐</div>
+          <div><strong>Schedule</strong><span>8-hr shifts, on-call, overtime, weekends as needed</span></div>
+        </div>
+        <div class="card-row">
+          <div class="card-icon">🏢</div>
+          <div><strong>Work Setting</strong><span>In person — multi-family &amp; mixed-use properties</span></div>
+        </div>
+      </div>
+
+      <!-- BENEFITS -->
+      <div class="card">
+        <h3>Benefits &amp; Perks</h3>
+        <div class="benefits-grid">
+          <div class="benefit-item">🏥 Medical, Dental &amp; Vision</div>
+          <div class="benefit-item">💰 Performance Bonuses</div>
+          <div class="benefit-item">🌴 Up to 4 Weeks PTO</div>
+          <div class="benefit-item">📅 11 Paid Holidays</div>
+          <div class="benefit-item">🎓 Education Reimbursement</div>
+          <div class="benefit-item">🔧 Tool Allowance</div>
+          <div class="benefit-item">🚗 Vehicle Allowance</div>
+          <div class="benefit-item">📱 Phone Allowance</div>
+          <div class="benefit-item">❤️ Wellbeing Reimbursements</div>
+          <div class="benefit-item">🛡️ Life &amp; Disability Ins.</div>
+          <div class="benefit-item">📈 401(k)</div>
+          <div class="benefit-item">🏷️ Employee Discounts</div>
+        </div>
+      </div>
+
+    </aside>
+  </div>
+
+  <footer>
+    &copy; 2026 AHM Management, LLC &nbsp;·&nbsp; St. Louis, MO &nbsp;·&nbsp; <a href="mailto:maintenance@ahmre.com" style="color:inherit;">maintenance@ahmre.com</a>
+  </footer>
+
+</body>
+</html>
